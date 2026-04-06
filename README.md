@@ -1,5 +1,11 @@
 # Agent Trace Intelligence MCP
 
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![MCP](https://img.shields.io/badge/MCP-stdio-green)
+![PyPI](https://img.shields.io/pypi/v/agent-trace-intelligence)
+![License MIT](https://img.shields.io/badge/license-MIT-brightgreen)
+![CI](https://github.com/harinarayn/agent-trace-intelligence/actions/workflows/ci.yml/badge.svg)
+
 **Diagnose why your agent did what it did, and how to fix it.**
 
 ## The Problem
@@ -177,7 +183,7 @@ from agent_trace_intelligence.formats import (
     adapt_langchain,      # LangChain callback handler output
     adapt_openai_agents,  # OpenAI Agents SDK RunStep objects
     adapt_autogen,        # AutoGen message history
-    adapt_maf,            # MAF GA 1.0, v1.1 stub
+    adapt_maf,            # MAF GA 1.0 (OpenTelemetry GenAI spans)
 )
 
 # Convert and pass directly to any tool
@@ -191,7 +197,7 @@ These are convenience helpers. The tools accept any valid AgentTrace JSON regard
 | `adapt_langchain` | LangChain callback handler / LangSmith export | v1 |
 | `adapt_openai_agents` | OpenAI Agents SDK (RunStep objects) | v1 |
 | `adapt_autogen` | AutoGen legacy (`pyautogen`) message history | v1 |
-| `adapt_maf` | Microsoft Agent Framework GA 1.0 | v1.1 stub, real format pending |
+| `adapt_maf` | Microsoft Agent Framework GA 1.0 (OTel spans) | v1 |
 
 ---
 
