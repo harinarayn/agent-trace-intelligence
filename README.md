@@ -207,13 +207,13 @@ Configure via `JUDGE_MODEL` env var. Zero code change required.
 
 | Use Case | Recommended Model | Cost |
 |----------|-------------------|------|
-| Best quality (default) | `azure/claude-opus-4-6` | ~$0.015/trace |
-| Fast Azure alternative | `azure/gpt-4.1` | ~$0.008/trace |
+| Best quality (default) | `azure_ai/claude-opus-4-6` | ~$0.015/trace |
+| Fast Azure alternative | `azure_ai/gpt-4.1` | ~$0.008/trace |
 | Open source / no Azure | `gpt-4o-mini` | ~$0.002/trace |
 | CI/CD batch evaluation | `gpt-4o-mini` | < $0.01/trace |
 | Anthropic direct | `claude-haiku-4-5-20251001` | ~$0.001/trace |
 
-**For CI/CD use:** Set `JUDGE_MODEL=gpt-4o-mini` to keep costs under $0.01 per trace. For interactive debugging, `azure/claude-opus-4-6` gives the best root cause reasoning.
+**For CI/CD use:** Set `JUDGE_MODEL=gpt-4o-mini` to keep costs under $0.01 per trace. For interactive debugging, `azure_ai/claude-opus-4-6` gives the best root cause reasoning.
 
 `efficiency_score` is always free. No model call, no API key.
 
