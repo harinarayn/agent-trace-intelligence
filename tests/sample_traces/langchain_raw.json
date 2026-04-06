@@ -1,0 +1,104 @@
+{
+  "runs": [
+    {
+      "id": "run_chain_001",
+      "name": "AgentExecutor",
+      "run_type": "chain",
+      "inputs": {
+        "input": "What is the capital of France and what is its population?"
+      },
+      "outputs": {
+        "output": "The capital of France is Paris, with a population of approximately 2.1 million in the city proper."
+      },
+      "start_time": "2024-01-15T10:00:00.000Z",
+      "end_time": "2024-01-15T10:00:08.500Z",
+      "error": null
+    },
+    {
+      "id": "run_llm_001",
+      "name": "ChatOpenAI",
+      "run_type": "llm",
+      "serialized": {
+        "id": ["langchain", "chat_models", "openai", "ChatOpenAI"],
+        "kwargs": {"model_name": "gpt-4o"}
+      },
+      "inputs": {
+        "messages": [
+          [{"type": "human", "content": "What is the capital of France and what is its population?"}]
+        ]
+      },
+      "outputs": {
+        "generations": [
+          [
+            {
+              "text": "I'll search for information about Paris.",
+              "generation_info": {"finish_reason": "tool_calls"}
+            }
+          ]
+        ],
+        "llm_output": {
+          "token_usage": {
+            "prompt_tokens": 45,
+            "completion_tokens": 25,
+            "total_tokens": 70
+          },
+          "model_name": "gpt-4o"
+        }
+      },
+      "start_time": "2024-01-15T10:00:00.500Z",
+      "end_time": "2024-01-15T10:00:02.000Z",
+      "error": null
+    },
+    {
+      "id": "run_tool_001",
+      "name": "web_search",
+      "run_type": "tool",
+      "inputs": {
+        "query": "capital of France population"
+      },
+      "outputs": {
+        "output": "Paris is the capital of France. The city proper has a population of 2.1 million, while the greater Paris metropolitan area has about 12 million residents."
+      },
+      "start_time": "2024-01-15T10:00:02.100Z",
+      "end_time": "2024-01-15T10:00:03.800Z",
+      "error": null
+    },
+    {
+      "id": "run_llm_002",
+      "name": "ChatOpenAI",
+      "run_type": "llm",
+      "serialized": {
+        "id": ["langchain", "chat_models", "openai", "ChatOpenAI"]
+      },
+      "inputs": {
+        "messages": [
+          [
+            {"type": "human", "content": "What is the capital of France and what is its population?"},
+            {"type": "ai", "content": "I'll search for information about Paris."},
+            {"type": "tool", "content": "Paris is the capital of France..."}
+          ]
+        ]
+      },
+      "outputs": {
+        "generations": [
+          [
+            {
+              "text": "The capital of France is Paris, with a population of approximately 2.1 million in the city proper.",
+              "generation_info": {"finish_reason": "stop"}
+            }
+          ]
+        ],
+        "llm_output": {
+          "token_usage": {
+            "prompt_tokens": 120,
+            "completion_tokens": 35,
+            "total_tokens": 155
+          }
+        }
+      },
+      "start_time": "2024-01-15T10:00:04.000Z",
+      "end_time": "2024-01-15T10:00:08.500Z",
+      "error": null
+    }
+  ]
+}

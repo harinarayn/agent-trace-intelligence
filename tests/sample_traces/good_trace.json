@@ -1,0 +1,43 @@
+{
+  "trace_id": "trace_good_001",
+  "agent_name": "ResearchAgent",
+  "goal": "Find the three most visited websites in the world and return each one with its estimated monthly visitor count.",
+  "model": "gpt-4o",
+  "total_tokens": 810,
+  "total_latency_ms": 2800,
+  "final_output": "The three most visited websites in the world are:\n1. Google.com: approximately 83.9 billion monthly visits\n2. YouTube.com: approximately 32.7 billion monthly visits\n3. Facebook.com: approximately 20.0 billion monthly visits\n(Source: Similarweb, 2024 rankings)",
+  "steps": [
+    {
+      "step_number": 1,
+      "role": "user",
+      "content": "What are the three most visited websites in the world? Include monthly visitor counts.",
+      "timestamp": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "step_number": 2,
+      "role": "assistant",
+      "content": "I will search for the most visited websites worldwide with their monthly traffic figures.",
+      "token_count": 95,
+      "timestamp": "2024-01-15T10:00:00.400Z"
+    },
+    {
+      "step_number": 3,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "most visited websites in the world 2024 monthly traffic Similarweb"},
+        "output": "According to Similarweb 2024 rankings: 1. Google.com - 83.9 billion monthly visits. 2. YouTube.com - 32.7 billion monthly visits. 3. Facebook.com - 20.0 billion monthly visits. 4. Wikipedia.org - 14.8 billion. 5. Twitter/X.com - 8.0 billion.",
+        "latency_ms": 1100,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:01.200Z"
+    },
+    {
+      "step_number": 4,
+      "role": "assistant",
+      "content": "The three most visited websites in the world are:\n1. Google.com: approximately 83.9 billion monthly visits\n2. YouTube.com: approximately 32.7 billion monthly visits\n3. Facebook.com: approximately 20.0 billion monthly visits\n(Source: Similarweb, 2024 rankings)",
+      "token_count": 715,
+      "timestamp": "2024-01-15T10:00:02.800Z"
+    }
+  ]
+}

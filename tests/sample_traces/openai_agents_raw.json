@@ -1,0 +1,52 @@
+{
+  "id": "run_abc123xyz",
+  "object": "thread.run",
+  "instructions": "You are a helpful research assistant. Answer questions accurately and concisely.",
+  "model": "gpt-4o",
+  "status": "completed",
+  "final_output": "The boiling point of water is 100 degrees Celsius (212 degrees Fahrenheit) at standard atmospheric pressure (1 atm).",
+  "steps": [
+    {
+      "id": "step_001",
+      "object": "thread.run.step",
+      "type": "message_creation",
+      "message": {
+        "role": "user",
+        "content": "What is the boiling point of water?"
+      }
+    },
+    {
+      "id": "step_002",
+      "object": "thread.run.step",
+      "type": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_tool_001",
+          "type": "function",
+          "function": {
+            "name": "knowledge_lookup",
+            "arguments": "{\"topic\": \"boiling point of water\", \"detail_level\": \"basic\"}"
+          },
+          "output": "Water boils at 100°C (212°F) at 1 atm pressure. At higher altitudes, the boiling point decreases.",
+          "latency_ms": 850
+        }
+      ]
+    },
+    {
+      "id": "step_003",
+      "object": "thread.run.step",
+      "type": "message_creation",
+      "message": {
+        "role": "assistant",
+        "content": "The boiling point of water is 100 degrees Celsius (212 degrees Fahrenheit) at standard atmospheric pressure (1 atm)."
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 380,
+    "completion_tokens": 95,
+    "total_tokens": 475
+  },
+  "created_at": 1705312800,
+  "completed_at": 1705312808
+}

@@ -1,0 +1,62 @@
+{
+  "trace_id": "trace_bad_001",
+  "agent_name": "ResearchAgent",
+  "goal": "Find the top 3 programming languages in 2024 and explain why each is popular.",
+  "model": "gpt-4o",
+  "total_tokens": 1450,
+  "total_latency_ms": 18000,
+  "final_output": "Python is popular. JavaScript is also popular.",
+  "steps": [
+    {
+      "step_number": 1,
+      "role": "user",
+      "content": "What are the top 3 programming languages in 2024 and why are they popular?",
+      "timestamp": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "step_number": 2,
+      "role": "assistant",
+      "content": "I'll search for the top programming languages in 2024.",
+      "token_count": 150,
+      "timestamp": "2024-01-15T10:00:00.800Z"
+    },
+    {
+      "step_number": 3,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "top programming languages 2024"},
+        "output": "According to Stack Overflow Developer Survey 2024: 1. Python (65%), 2. JavaScript (63%), 3. TypeScript (38%). Python leads for AI/ML, JavaScript for web.",
+        "latency_ms": 1400,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:01.500Z"
+    },
+    {
+      "step_number": 4,
+      "role": "assistant",
+      "content": "Let me search again to confirm this data.",
+      "token_count": 200,
+      "timestamp": "2024-01-15T10:00:04.000Z"
+    },
+    {
+      "step_number": 5,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "top programming languages 2024"},
+        "output": "According to Stack Overflow Developer Survey 2024: 1. Python (65%), 2. JavaScript (63%), 3. TypeScript (38%). Python leads for AI/ML, JavaScript for web.",
+        "latency_ms": 1300,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:05.000Z"
+    },
+    {
+      "step_number": 6,
+      "role": "assistant",
+      "content": "Python is popular. JavaScript is also popular.",
+      "token_count": 1100,
+      "timestamp": "2024-01-15T10:00:09.800Z"
+    }
+  ]
+}

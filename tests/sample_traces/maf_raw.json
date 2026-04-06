@@ -1,0 +1,5 @@
+{
+  "_comment": "MAF GA 1.0 adapter is a stub — real trace format not yet confirmed. This file is a placeholder.",
+  "_note": "MAF (Microsoft Agent Framework) GA 1.0 was released April 3rd 2026. The trace output format field names and event structure are unknown until real MAF traces are available. Contribute the real format at: https://github.com/harinarayn/agent-trace-intelligence",
+  "placeholder": true
+}

@@ -1,0 +1,79 @@
+{
+  "trace_id": "trace_inefficient_001",
+  "agent_name": "DataAgent",
+  "goal": "Summarize the latest news about electric vehicles.",
+  "model": "gpt-4o",
+  "total_tokens": 3200,
+  "total_latency_ms": 22000,
+  "final_output": "Electric vehicles are becoming more popular. Several new models were announced.",
+  "steps": [
+    {
+      "step_number": 1,
+      "role": "user",
+      "content": "Give me a summary of the latest news about electric vehicles.",
+      "timestamp": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "step_number": 2,
+      "role": "assistant",
+      "content": "I'll search for the latest electric vehicle news. Let me gather comprehensive information.",
+      "token_count": 400,
+      "timestamp": "2024-01-15T10:00:01.000Z"
+    },
+    {
+      "step_number": 3,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "latest electric vehicle news 2024"},
+        "output": "Tesla announces new Model 3 refresh. GM expands EV lineup. Ford F-150 Lightning sales up 40%. BYD becomes world's largest EV maker. EU announces stricter emissions standards.",
+        "latency_ms": 5500,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:02.000Z"
+    },
+    {
+      "step_number": 4,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "latest electric vehicle news 2024"},
+        "output": "Tesla announces new Model 3 refresh. GM expands EV lineup. Ford F-150 Lightning sales up 40%. BYD becomes world's largest EV maker. EU announces stricter emissions standards.",
+        "latency_ms": 5200,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:08.000Z"
+    },
+    {
+      "step_number": 5,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "electric car market trends"},
+        "output": "Global EV market grew 25% in 2023. Battery costs down 15%. Charging infrastructure expanding.",
+        "latency_ms": 4800,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:14.000Z"
+    },
+    {
+      "step_number": 6,
+      "role": "tool",
+      "tool_call": {
+        "tool_name": "web_search",
+        "input": {"query": "electric car market trends"},
+        "output": "Global EV market grew 25% in 2023. Battery costs down 15%. Charging infrastructure expanding.",
+        "latency_ms": 4900,
+        "error": null
+      },
+      "timestamp": "2024-01-15T10:00:19.500Z"
+    },
+    {
+      "step_number": 7,
+      "role": "assistant",
+      "content": "Electric vehicles are becoming more popular. Several new models were announced.",
+      "token_count": 2800,
+      "timestamp": "2024-01-15T10:00:22.000Z"
+    }
+  ]
+}
