@@ -238,6 +238,7 @@ Configure via `JUDGE_MODEL` env var. Zero code change required.
 - Batch trace analysis for CI/CD quality gates
 - Enterprise governance signals to flag traces that violate defined agent policies
 - SSE transport for enterprise internal MCP deployment
+- Connectors to pull traces directly from observability platforms (Azure App Insights, AWS CloudWatch, GCP Cloud Trace, LangSmith). Contributions welcome.
 
 ---
 
