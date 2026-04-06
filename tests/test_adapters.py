@@ -75,19 +75,55 @@ class TestOpenAIAgentsAdapter:
 
 
 class TestMAFAdapter:
-    def test_adapt_maf_raises_not_implemented(self):
-        with pytest.raises(NotImplementedError):
-            adapt_maf({})
+    def test_adapt_maf_valid_input_returns_agent_trace(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert isinstance(result, AgentTrace)
 
-    def test_adapt_maf_raises_not_implemented_with_data(self):
-        with pytest.raises(NotImplementedError):
-            adapt_maf({"some": "data"})
+    def test_adapt_maf_valid_input_has_steps(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert len(result.steps) > 0
 
-    def test_adapt_maf_error_message_mentions_maf(self):
-        try:
-            adapt_maf({})
-        except NotImplementedError as e:
-            assert "MAF" in str(e)
+    def test_adapt_maf_extracts_agent_name(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert result.agent_name == "ResearchAgent"
+
+    def test_adapt_maf_extracts_goal(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert result.goal is not None
+        assert len(result.goal) > 0
+
+    def test_adapt_maf_extracts_model(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert result.model == "gpt-4o"
+
+    def test_adapt_maf_extracts_tool_calls(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        tool_steps = [s for s in result.steps if s.tool_call is not None]
+        assert len(tool_steps) > 0
+
+    def test_adapt_maf_extracts_total_tokens(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw)
+        assert result.total_tokens == 520  # 85+45+210+180
+
+    def test_adapt_maf_accepts_list_of_spans(self):
+        raw = load_fixture("maf_raw.json")
+        result = adapt_maf(raw["spans"])
+        assert isinstance(result, AgentTrace)
+
+    def test_adapt_maf_bad_input_raises_value_error(self):
+        with pytest.raises(ValueError):
+            adapt_maf({"placeholder": True})
+
+    def test_adapt_maf_empty_spans_raises_value_error(self):
+        with pytest.raises(ValueError):
+            adapt_maf({"spans": []})
 
 
 class TestAutoGenAdapter:

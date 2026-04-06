@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.2] - 2026-04-06
 
+### Added
+- MAF GA 1.0 adapter: real implementation based on OpenTelemetry GenAI Semantic Conventions
+- MAF adapter handles spans list, dict with spans key, and OTLP JSON export format
+- 7 new MAF adapter tests (76 total)
+- Realistic MAF sample trace fixture using OTel span format
+
 ### Changed
 - Rewrote README solution description and removed Positioning Note section
 

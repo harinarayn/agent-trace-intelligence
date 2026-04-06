@@ -1,5 +1,84 @@
 {
-  "_comment": "MAF GA 1.0 adapter is a stub — real trace format not yet confirmed. This file is a placeholder.",
-  "_note": "MAF (Microsoft Agent Framework) GA 1.0 was released April 3rd 2026. The trace output format field names and event structure are unknown until real MAF traces are available. Contribute the real format at: https://github.com/harinarayn/agent-trace-intelligence",
-  "placeholder": true
+  "spans": [
+    {
+      "name": "invoke_agent ResearchAgent",
+      "context": {
+        "trace_id": "0xf2258b51421fe9cf4c0bd428c87b1ae4",
+        "span_id": "0x2cad6fc139dcf01d",
+        "trace_state": "[]"
+      },
+      "kind": "SpanKind.CLIENT",
+      "parent_id": null,
+      "start_time": "2025-09-25T11:00:48.000000Z",
+      "end_time": "2025-09-25T11:00:57.000000Z",
+      "status": {"status_code": "OK"},
+      "attributes": {
+        "gen_ai.operation.name": "invoke_agent",
+        "gen_ai.system": "openai",
+        "gen_ai.agent.id": "ResearchAgent",
+        "gen_ai.agent.name": "ResearchAgent",
+        "gen_ai.request.instructions": "Find the top 3 programming languages in 2024 and explain why each is popular."
+      }
+    },
+    {
+      "name": "chat gpt-4o",
+      "context": {
+        "trace_id": "0xf2258b51421fe9cf4c0bd428c87b1ae4",
+        "span_id": "0x3bad7gc240edf02e",
+        "trace_state": "[]"
+      },
+      "kind": "SpanKind.CLIENT",
+      "parent_id": "0x2cad6fc139dcf01d",
+      "start_time": "2025-09-25T11:00:48.500000Z",
+      "end_time": "2025-09-25T11:00:50.200000Z",
+      "status": {"status_code": "OK"},
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.system": "openai",
+        "gen_ai.response.id": "chatcmpl-ABC123",
+        "gen_ai.usage.input_tokens": 85,
+        "gen_ai.usage.output_tokens": 45,
+        "gen_ai.response.message": "{\"role\": \"assistant\", \"content\": \"I will search for the top programming languages in 2024.\"}"
+      }
+    },
+    {
+      "name": "execute_tool web_search",
+      "context": {
+        "trace_id": "0xf2258b51421fe9cf4c0bd428c87b1ae4",
+        "span_id": "0x4cce8hd351feg13f",
+        "trace_state": "[]"
+      },
+      "kind": "SpanKind.CLIENT",
+      "parent_id": "0x2cad6fc139dcf01d",
+      "start_time": "2025-09-25T11:00:50.300000Z",
+      "end_time": "2025-09-25T11:00:51.900000Z",
+      "status": {"status_code": "OK"},
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.call.arguments": "{\"query\": \"top programming languages 2024\"}",
+        "gen_ai.tool.call.result": "1. Python - AI/ML dominance. 2. JavaScript - web ubiquity. 3. TypeScript - typed JS adoption."
+      }
+    },
+    {
+      "name": "chat gpt-4o",
+      "context": {
+        "trace_id": "0xf2258b51421fe9cf4c0bd428c87b1ae4",
+        "span_id": "0x5ddf9ie462gfh24g",
+        "trace_state": "[]"
+      },
+      "kind": "SpanKind.CLIENT",
+      "parent_id": "0x2cad6fc139dcf01d",
+      "start_time": "2025-09-25T11:00:52.000000Z",
+      "end_time": "2025-09-25T11:00:57.000000Z",
+      "status": {"status_code": "OK"},
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.system": "openai",
+        "gen_ai.response.id": "chatcmpl-DEF456",
+        "gen_ai.usage.input_tokens": 210,
+        "gen_ai.usage.output_tokens": 180,
+        "gen_ai.response.message": "{\"role\": \"assistant\", \"content\": \"The top 3 programming languages in 2024 are: 1. Python, popular for AI and ML. 2. JavaScript, dominant in web development. 3. TypeScript, growing fast due to type safety.\"}"
+      }
+    }
+  ]
 }
