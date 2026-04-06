@@ -289,12 +289,12 @@
     <div class="card" style="background: #1a090a; border-color: #3a1a1a; flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
         <div style="font-size: 16px; color: var(--red); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">judge_trace result</div>
-        <div style="font-size: 28px; font-weight: 800; color: var(--yellow);">C &nbsp; 0.55 / 1.0 &nbsp; Needs optimisation</div>
+        <div style="font-size: 28px; font-weight: 800; color: var(--red);">F &nbsp; 0.42 / 1.0 &nbsp; Broken</div>
       </div>
       <p style="font-size: 18px; color: var(--muted); line-height: 1.55; margin-bottom: 12px;">
-        <span style="color: var(--text); font-weight: 600;">Root cause:</span> Agent summarised top-level numbers correctly but did not perform the anomaly detection step it was explicitly asked for. The APAC drop was present in the parsed data and never surfaced.
+        <span style="color: var(--text); font-weight: 600;">Root cause:</span> The agent performed no anomaly detection on the parsed data. APAC's -23% decline was omitted entirely. The summary sent to the CFO falsely states overall performance is on track.
       </p>
-      <p style="font-size: 17px; color: var(--cyan); line-height: 1.5;">Fix: Add a dedicated anomaly scan step after parse_data. Do not generate the summary until all flagged conditions are checked.</p>
+      <p style="font-size: 17px; color: var(--cyan); line-height: 1.5;">Fix: Add an explicit anomaly detection step after parse_data. Compare each region against thresholds before generating the summary. Never send until all flagged conditions are included.</p>
     </div>
   </div>
   <div class="footer">
