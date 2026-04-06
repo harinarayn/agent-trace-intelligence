@@ -22,6 +22,19 @@ Works in Cursor, Claude Desktop, VS Code (Copilot MCP), and any stdio MCP client
 
 ---
 
+## How It Fits
+
+This tool explains why a single agent trace behaved the way it did.
+
+It complements existing observability tools:
+
+- **Azure Application Insights, AWS CloudWatch, GCP Cloud Trace**: show what happened across runs
+- **LangSmith, Arize Phoenix, W&B Weave**: track agent behaviour over time
+
+This tool answers a narrower question: why did this specific trace fail, and what exactly needs to change?
+
+---
+
 ## Install
 
 ```bash
