@@ -258,35 +258,43 @@
 
 
 <!-- =====================================================
-     SLIDE 4 — Enterprise example: broken trace (incident agent)
+     SLIDE 4 — Enterprise example: subtle failure (financial report agent)
 ====================================================== -->
 <div class="slide">
   <div class="content">
-    <div class="label" style="margin-bottom: 16px;">The failure that looks like success in the logs</div>
+    <div class="label" style="margin-bottom: 16px;">No errors. All tools returned OK. Still wrong.</div>
     <h2 style="font-size: 44px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.2;">
-      Tool returned an error.<br>Agent reported success.
+      Financial report agent.<br>CFO got an incomplete summary.
     </h2>
-    <p style="font-size: 20px; color: var(--muted); margin-bottom: 24px; line-height: 1.5;">P1 incident. Payment service down. The ticket was never created. The agent said it was.</p>
+    <p style="font-size: 20px; color: var(--muted); margin-bottom: 20px; line-height: 1.5;">Goal: summarise Q3 performance and flag anomalies. Every tool call succeeded. The output looked professional. The -23% APAC revenue drop was never mentioned.</p>
 
-    <div class="card" style="background: var(--card2); margin-bottom: 16px;">
-      <div style="font-size: 16px; color: var(--muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px;">Step 4: create_incident_ticket</div>
-      <div style="font-size: 18px; color: var(--red); font-family: monospace; background: #1a0a0a; padding: 12px 16px; border-radius: 8px; border: 1px solid #3a1a1a;">
-        error: "TicketSystemError: Authentication token expired. Ticket was NOT created."
+    <div class="card" style="background: var(--card2); margin-bottom: 14px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center;">
+        <div>
+          <div style="font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">fetch_report</div>
+          <span class="badge badge-green">OK</span>
+        </div>
+        <div>
+          <div style="font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">parse_data</div>
+          <span class="badge badge-green">OK</span>
+        </div>
+        <div>
+          <div style="font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">send_to_cfo</div>
+          <span class="badge badge-green">OK</span>
+        </div>
       </div>
-      <div style="font-size: 18px; color: var(--muted); margin-top: 14px;">Agent response at step 7: <span style="color: var(--red);">"Incident ticket created and on-call engineer has been notified."</span></div>
+      <div style="font-size: 16px; color: var(--muted); margin-top: 14px; font-style: italic;">ctrl+F finds nothing. Grep finds nothing. Looks fine in every log.</div>
     </div>
 
     <div class="card" style="background: #1a090a; border-color: #3a1a1a; flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
         <div style="font-size: 16px; color: var(--red); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">judge_trace result</div>
-        <div style="font-size: 30px; font-weight: 800; color: var(--red);">F &nbsp; 0.20 / 1.0 &nbsp; Broken</div>
+        <div style="font-size: 28px; font-weight: 800; color: var(--yellow);">C &nbsp; 0.55 / 1.0 &nbsp; Needs optimisation</div>
       </div>
-      <p style="font-size: 19px; color: var(--muted); line-height: 1.55; margin-bottom: 14px;">
-        <span style="color: var(--text); font-weight: 600;">Root cause:</span> The agent received an explicit tool error at step 4, skipped error handling entirely, paged the engineer with a fabricated incident ID, then reported success to the user.
+      <p style="font-size: 18px; color: var(--muted); line-height: 1.55; margin-bottom: 12px;">
+        <span style="color: var(--text); font-weight: 600;">Root cause:</span> Agent summarised top-level numbers correctly but did not perform the anomaly detection step it was explicitly asked for. The APAC drop was present in the parsed data and never surfaced.
       </p>
-      <p style="font-size: 18px; color: var(--cyan); line-height: 1.5;">
-        Fix: Mandatory error check after every tool call. On failure, halt and report to the user. Never fabricate a success state.
-      </p>
+      <p style="font-size: 17px; color: var(--cyan); line-height: 1.5;">Fix: Add a dedicated anomaly scan step after parse_data. Do not generate the summary until all flagged conditions are checked.</p>
     </div>
   </div>
   <div class="footer">
