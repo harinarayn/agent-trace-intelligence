@@ -8,11 +8,11 @@ When an AI agent fails or behaves unexpectedly, existing tools tell you *what* h
 
 ## The Solution
 
-Agent Trace Intelligence is an MCP server with three tools that turn raw traces into root causes, scores, and concrete fixes. Zero instrumentation required. Pass in any agent trace JSON and get answers back.
+Agent traces show you what happened. This tool tells you why it went wrong and what to change. Pass in any agent trace JSON and get root causes, scores, and a concrete fix back. Zero instrumentation required.
 
-- Not an observability platform. A debugging companion.
-- Complementary to LangSmith, Arize Phoenix, W&B Weave. Run alongside when you need to understand a specific failure
-- Works in Cursor, Claude Desktop, VS Code (Copilot MCP), and any stdio MCP client
+Use it alongside LangSmith, Arize Phoenix, and W&B Weave. When your observability stack surfaces a failure, this is where you go to diagnose it.
+
+Works in Cursor, Claude Desktop, VS Code (Copilot MCP), and any stdio MCP client.
 
 ---
 
@@ -220,12 +220,6 @@ Configure via `JUDGE_MODEL` env var. Zero code change required.
 - Enterprise governance signals to flag traces that violate defined agent policies
 - SSE transport for enterprise internal MCP deployment
 - MAF GA 1.0 native adapter (v1.1, pending real trace format confirmation)
-
----
-
-## Positioning Note
-
-This is a **debugging tool**, not an eval platform. Use it when your agent does something unexpected and you need to understand why. For ongoing monitoring and observability, use LangSmith, Phoenix, or Weave. Then reach for Agent Trace Intelligence when you need to dig into a specific failure.
 
 ---
 

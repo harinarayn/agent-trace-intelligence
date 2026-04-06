@@ -1,6 +1,6 @@
 [project]
 name = "agent-trace-intelligence"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP server that diagnoses why your agent behaved the way it did, and how to fix it"
 readme = "README.md"
 requires-python = ">=3.11"
